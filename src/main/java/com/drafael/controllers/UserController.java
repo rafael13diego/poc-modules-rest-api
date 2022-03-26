@@ -2,6 +2,7 @@ package com.drafael.controllers;
 
 import com.drafael.Services.UserServices;
 import com.drafael.entities.User;
+import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,8 @@ public class UserController {
     private UserServices userServices;
 
     @GetMapping
-    public ResponseEntity<Page<User>> getUsers(@RequestParam("page") int page,@RequestParam("size") int size){
+    @Timed("get.users")
+    public ResponseEntity<Page<User>> getUsers(@RequestParam(required = false, defaultValue = "0", value="page") int page,@RequestParam(required = false, defaultValue = "10",value="size") int size){
         return new ResponseEntity<Page<User>>(userServices.getUsers(page, size), HttpStatus.OK);
     }
     /*@GetMapping
