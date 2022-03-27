@@ -4,6 +4,7 @@ import com.drafael.Services.UserServices;
 import com.drafael.entities.User;
 import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +45,11 @@ public class UserController {
                 HttpStatus.OK);
     }
 
+    @DeleteMapping("/username/{username}")
+    public ResponseEntity<Void> deleteUserByUsername(@PathVariable("username") String username){
+        userServices.deleteUserByUsername(username);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
 
 
 }
