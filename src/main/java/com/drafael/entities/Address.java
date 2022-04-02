@@ -25,7 +25,7 @@ public class Address {
     @Getter @Setter @Column(name = "city")
     private String city;
 
-    @ManyToOne
+    @ManyToOne @Getter @Setter
     private Profile profile;
 
 

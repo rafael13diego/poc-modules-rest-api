@@ -17,12 +17,15 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")@Getter@Setter
+    @Column(name = "id")
+    @Getter
+    @Setter
     private Integer id;
 
-    @Column(name = "name")@Getter@Setter
+    @Column(name = "name")
+    @Getter
+    @Setter
     private String name;
-
 
 
 }

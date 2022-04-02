@@ -24,8 +24,8 @@ public class UserServices {
 
     public static final Logger log = LoggerFactory.getLogger(UserServices.class);
 
-    public Page<User> getUsers(int page, int size ){
-        return userRepository.findAll(PageRequest.of(page,size));
+    public Page<User> getUsers(int page, int size) {
+        return userRepository.findAll(PageRequest.of(page, size));
         //return userRepository.findAll();
     }
 
@@ -33,15 +33,15 @@ public class UserServices {
         //return userRepository.findAll();
     }*/
 
-    public User getUserById(Integer userId){
+    public User getUserById(Integer userId) {
         return userRepository.findById(userId).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User %d not found", userId)));
 
     }
 
     @Cacheable("users")
-    public User getUserByUsername(String username){
-        log.info("Getting user by Username {}",username);
+    public User getUserByUsername(String username) {
+        log.info("Getting user by Username {}", username);
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -52,14 +52,14 @@ public class UserServices {
 
     }
 
-    public User getUserByUsernameAndPassword(String username, String password){
+    public User getUserByUsernameAndPassword(String username, String password) {
         return userRepository.findByUsernameAndPassword(username, password).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User %s not registred", username)));
 
     }
 
     @CacheEvict("users")
-    public void deleteUserByUsername(String username){
+    public void deleteUserByUsername(String username) {
         //TODO: usanddo el metodo de getUser de esta clase
         User user = getUserByUsername(username);
         userRepository.delete(user);

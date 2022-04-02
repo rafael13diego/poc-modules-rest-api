@@ -8,27 +8,36 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name="profiles")
+@Table(name = "profiles")
 public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @Getter@Setter
+    @Getter
+    @Setter
     private Integer id;
 
-    @Column(name = "firstName")@Getter@Setter
+    @Column(name = "firstName")
+    @Getter
+    @Setter
     private String firstName;
 
-    @Column(name = "lastname")@Getter@Setter
+    @Column(name = "lastname")
+    @Getter
+    @Setter
     private String lastName;
 
-    @Column(name = "birthdate")@Getter@Setter
+    @Column(name = "birthdate")
+    @Getter
+    @Setter
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
     @OneToOne
-    @JoinColumn(name ="user_id", referencedColumnName ="id")@Getter@Setter
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @Getter
+    @Setter
     private User user;
 
     @Override
