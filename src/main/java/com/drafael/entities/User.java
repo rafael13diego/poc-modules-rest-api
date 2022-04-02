@@ -13,21 +13,21 @@ import java.util.Objects;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id")
-    @Getter@Setter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @Getter
+    @Setter
     private Integer id;
 
-    @Getter @Setter @Column(name = "name")
+    @Getter
+    @Setter
+    @Column(name = "name")
     private String username;
 
-    @Getter @Setter @Column(name = "password")
+    @Getter
+    @Setter
+    @Column(name = "password")
     private String password;
-
-
-    @OneToOne
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
-    @Getter @Setter
-    private Profile profile;
 
     @Override
     public boolean equals(Object o) {

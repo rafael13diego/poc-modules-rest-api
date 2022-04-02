@@ -12,13 +12,20 @@ public class UserInRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
+    @Getter
+    @Setter
     private Integer id;
 
-    @Getter @Setter @ManyToOne @JoinColumn(name = "user_id")
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @Getter @Setter @ManyToOne @JoinColumn(name = "role_id")
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "role_id")
     private Role role;
 
     @Override
