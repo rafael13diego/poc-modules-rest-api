@@ -1,11 +1,15 @@
 package com.drafael.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Objects;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "user_in_role")
 public class UserInRole {
@@ -27,6 +31,11 @@ public class UserInRole {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+    public UserInRole(User user, Role role) {
+        this.user = user;
+        this.role = role;
+    }
 
     @Override
     public boolean equals(Object o) {

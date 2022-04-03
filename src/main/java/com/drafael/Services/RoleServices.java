@@ -35,6 +35,11 @@ public class RoleServices {
         return roleRepository.findAll();
     }
 
+    public List<User> getUsersByRole(String roleName){
+        //TODO: Hacer validación del nombre del rol
+        return userInRoleRepository.findUserByRoleName(roleName);
+    }
+
     public Role createRole(Role role) {
         return roleRepository.save(role);
     }

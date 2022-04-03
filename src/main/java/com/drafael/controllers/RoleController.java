@@ -3,6 +3,7 @@ package com.drafael.controllers;
 import com.drafael.Services.RoleServices;
 //import com.drafael.entities.Role;
 import com.drafael.entities.Role;
+import com.drafael.entities.User;
 import com.drafael.entities.UserInRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,11 @@ public class RoleController {
         return new ResponseEntity<List<Role>>(roleServices.getRoles(), HttpStatus.OK);
     }
 
+    @GetMapping("/{roleName}/users")
+    public ResponseEntity<List<User>> getUsersByRole(@PathVariable("roleName") String roleName) {
+        return new ResponseEntity<List<User>>(roleServices.getUsersByRole(roleName), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Role> createRole(@RequestBody Role role) {
         return new ResponseEntity<Role>(roleServices.createRole(role), HttpStatus.CREATED);
@@ -43,7 +49,6 @@ public class RoleController {
     @PostMapping("/{roleId}/users/{userId}")
     public ResponseEntity<UserInRole> assingRole(@PathVariable("userId") Integer userId,
                                                  @PathVariable("roleId") Integer roleId) {
-
         return new ResponseEntity<UserInRole>(roleServices.assingRole(userId, roleId), HttpStatus.CREATED);
     }
 

@@ -27,5 +27,7 @@ public class Role {
     @Setter
     private String name;
 
-
+    public Role(String name) {
+        this.name = name;
+    }
 }
